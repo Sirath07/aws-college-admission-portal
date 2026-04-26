@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yenepoya University — Admissions Enquiry 2026-27</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0a1f44;
+      --navy-mid: #122755;
+      --blue: #1a56b0;
+      --blue-light: #2d7dd2;
+      --accent: #6bbf4e;
+      --accent-dark: #4fa535;
+      --gold: #f5a623;
+      --white: #ffffff;
+      --off-white: #f4f7fc;
+      --grey-light: #e8eef7;
+      --grey: #8fa3bf;
+      --text: #1c2d45;
+      --text-muted: #5a7a9e;
+      --error: #e03e3e;
+      --success: #27a84a;
+      --shadow: 0 4px 24px rgba(10,31,68,0.10);
+      --shadow-lg: 0 12px 40px rgba(10,31,68,0.15);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--off-white);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    .site-header {
+      background: var(--navy);
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 16px rgba(10,31,68,0.25);
+    }
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 32px;
+      gap: 20px;
+    }
+    .logo-area { display: flex; align-items: center; gap: 14px; }
+    .logo-emblem {
+      width: 48px; height: 48px;
+      background: var(--accent);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 700; color: var(--white);
+      flex-shrink: 0;
+    }
+    .logo-text { color: var(--white); }
+    .logo-text .name {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px; font-weight: 700; letter-spacing: 0.3px;
+      line-height: 1.1;
+    }
+    .logo-text .tagline {
+      font-size: 11px; color: rgba(255,255,255,0.55);
+      letter-spacing: 0.5px; margin-top: 2px;
+    }
+    .header-contact {
+      display: flex; gap: 24px; align-items: center;
+    }
+    .contact-item {
+      color: rgba(255,255,255,0.75);
+      font-size: 12.5px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .contact-item svg { opacity: 0.7; }
+    .apply-btn-header {
+      background: var(--accent);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px; font-weight: 600;
+      padding: 9px 20px;
+      border-radius: 7px;
+      text-decoration: none;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .apply-btn-header:hover { background: var(--accent-dark); }
+
+    /* ── HERO BANNER ── */
+    .hero {
+      background: linear-gradient(120deg, var(--navy) 0%, var(--navy-mid) 50%, #1a3a6e 100%);
+      padding: 52px 32px 56px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-inner { max-width: 1100px; margin: 0 auto; position: relative; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(107,191,78,0.18);
+      border: 1px solid rgba(107,191,78,0.4);
+      color: var(--accent);
+      font-size: 11.5px; font-weight: 600;
+      letter-spacing: 1.2px; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700; color: var(--white);
+      line-height: 1.18; margin-bottom: 12px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero p {
+      color: rgba(255,255,255,0.65);
+      font-size: 15.5px; max-width: 540px;
+      line-height: 1.6; margin-bottom: 28px;
+    }
+    .hero-stats {
+      display: flex; gap: 32px; flex-wrap: wrap;
+    }
+    .stat { border-left: 2px solid var(--accent); padding-left: 14px; }
+    .stat .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px; font-weight: 700; color: var(--white);
+      line-height: 1;
+    }
+    .stat .label { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 3px; }
+
+    /* ── MAIN LAYOUT ── */
+    .page-body { max-width: 1100px; margin: 0 auto; padding: 40px 24px 60px; }
+    .two-col { display: grid; grid-template-columns: 1fr 420px; gap: 32px; align-items: start; }
+
+    /* ── INFO PANEL (left) ── */
+    .info-panel { display: flex; flex-direction: column; gap: 20px; }
+
+    .card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 24px 26px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(26,86,176,0.07);
+    }
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px; font-weight: 700;
+      color: var(--navy); margin-bottom: 4px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .card-title .icon {
+      width: 30px; height: 30px;
+      background: var(--off-white);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px;
+    }
+    .card-subtitle { font-size: 13px; color: var(--text-muted); margin-bottom: 18px; }
+
+    /* Course category tabs */
+    .cat-tabs {
+      display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px;
+    }
+    .cat-tab {
+      background: var(--off-white);
+      border: 1.5px solid var(--grey-light);
+      border-radius: 20px;
+      padding: 5px 14px; font-size: 12.5px; font-weight: 500;
+      color: var(--text-muted); cursor: pointer;
+      transition: all 0.18s;
+    }
+    .cat-tab:hover, .cat-tab.active {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: var(--white);
+    }
+
+    /* Course list */
+    .course-list { display: flex; flex-direction: column; gap: 8px; max-height: 340px; overflow-y: auto; }
+    .course-list::-webkit-scrollbar { width: 5px; }
+    .course-list::-webkit-scrollbar-track { background: var(--grey-light); border-radius: 10px; }
+    .course-list::-webkit-scrollbar-thumb { background: var(--blue-light); border-radius: 10px; }
+
+    .course-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 14px; border-radius: 9px;
+      background: var(--off-white);
+      border: 1px solid transparent;
+      transition: all 0.18s; cursor: default;
+    }
+    .course-item:hover { background: #e8f0fb; border-color: rgba(26,86,176,0.15); }
+    .course-item .cname { font-size: 13.5px; font-weight: 500; color: var(--text); flex: 1; }
+    .course-item .cfee {
+      font-size: 12.5px; font-weight: 600; color: var(--blue);
+      white-space: nowrap; margin-left: 10px;
+    }
+    .course-item .cdur {
+      font-size: 11.5px; color: var(--grey);
+      white-space: nowrap; margin-left: 8px;
+    }
+
+    /* Eligibility note */
+    .elig-note {
+      background: #f0f6ff;
+      border-left: 3px solid var(--blue);
+      border-radius: 0 8px 8px 0;
+      padding: 10px 14px;
+      font-size: 12.5px; color: var(--text-muted);
+      margin-top: 12px; line-height: 1.5;
+    }
+    .elig-note strong { color: var(--navy); }
+
+    /* Notice box */
+    .notice-box {
+      background: linear-gradient(135deg, #fff8e8 0%, #fff3d0 100%);
+      border: 1px solid #f0c040;
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 13px; color: #7a5500;
+      line-height: 1.55;
+    }
+    .notice-box ul { padding-left: 16px; margin-top: 6px; }
+    .notice-box ul li { margin-bottom: 4px; }
+    .notice-title {
+      font-weight: 700; display: flex; align-items: center; gap: 6px;
+      font-size: 13px; margin-bottom: 8px; color: #5a3c00;
+    }
+
+    /* ── FORM CARD (right) ── */
+    .form-card {
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(26,86,176,0.08);
+      overflow: hidden;
+      position: sticky; top: 86px;
+    }
+    .form-header {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      padding: 22px 28px 20px;
+    }
+    .form-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px; color: var(--white); font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .form-header p { font-size: 13px; color: rgba(255,255,255,0.55); }
+
+    .form-body { padding: 24px 26px 28px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group:last-child { margin-bottom: 0; }
+
+    label {
+      display: block;
+      font-size: 12px; font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: 0.5px;
+      margin-bottom: 7px;
+    }
+    label .req { color: var(--error); margin-left: 2px; }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid var(--grey-light);
+      border-radius: 9px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px; color: var(--text);
+      background: var(--white);
+      outline: none;
+      transition: border 0.2s, box-shadow 0.2s;
+      appearance: none; -webkit-appearance: none;
+    }
+    input::placeholder, textarea::placeholder { color: #b0bdd0; }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(26,86,176,0.10);
+    }
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%238fa3bf' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+    select option { color: var(--text); }
+    textarea { resize: vertical; min-height: 90px; }
+
+    /* Select group */
+    .select-group { position: relative; }
+    .select-group select { padding-left: 14px; }
+
+    /* Level selector */
+    .level-toggle {
+      display: flex; gap: 6px; margin-bottom: 16px;
+    }
+    .level-btn {
+      flex: 1; padding: 8px;
+      border: 1.5px solid var(--grey-light);
+      border-radius: 8px; background: var(--off-white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12.5px; font-weight: 500; color: var(--text-muted);
+      cursor: pointer; transition: all 0.18s;
+    }
+    .level-btn.active {
+      background: var(--blue); border-color: var(--blue); color: var(--white);
+    }
+
+    /* Submit */
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+      color: var(--white);
+      border: none; border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px; font-weight: 600;
+      cursor: pointer; letter-spacing: 0.3px;
+      transition: opacity 0.2s, transform 0.15s;
+      margin-top: 6px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .submit-btn:hover { opacity: 0.92; transform: translateY(-1px); }
+    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    .form-note {
+      font-size: 11.5px; color: var(--grey);
+      text-align: center; margin-top: 12px; line-height: 1.5;
+    }
+    .form-note a { color: var(--blue); text-decoration: none; }
+
+    /* Alert */
+    .alert {
+      border-radius: 10px; padding: 13px 16px;
+      font-size: 13.5px; font-weight: 500;
+      margin-top: 14px; display: none; line-height: 1.5;
+    }
+    .alert.success {
+      background: #e9faf0; border: 1.5px solid #27a84a; color: #1a7036;
+      display: block;
+    }
+    .alert.error {
+      background: #fff0f0; border: 1.5px solid var(--error); color: #b02222;
+      display: block;
+    }
+    .ref-id { font-size: 12px; color: #2a8a47; margin-top: 5px; }
+
+    /* Eligibility popup display */
+    .elig-popup {
+      background: #e8f4ff;
+      border: 1px solid #b8d4f0;
+      border-radius: 9px;
+      padding: 10px 14px;
+      font-size: 12.5px; color: #1a4a7a;
+      margin-top: 8px; display: none; line-height: 1.5;
+    }
+    .elig-popup.show { display: block; }
+    .elig-popup strong { display: block; margin-bottom: 3px; color: var(--navy); font-size: 12px; }
+
+    /* Footer */
+    .site-footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 22px;
+      font-size: 12.5px;
+      margin-top: 20px;
+    }
+    .site-footer a { color: var(--accent); text-decoration: none; }
+
+    /* Divider */
+    .section-divider {
+      display: flex; align-items: center; gap: 12px;
+      color: var(--grey); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.5px; text-transform: uppercase;
+      margin: 4px 0 16px;
+    }
+    .section-divider::before, .section-divider::after {
+      content: ''; flex: 1; height: 1px; background: var(--grey-light);
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .two-col { grid-template-columns: 1fr; }
+      .form-card { position: static; }
+      .header-contact { display: none; }
+      .hero { padding: 36px 20px 40px; }
+      .hero-stats { gap: 20px; }
+    }
+    @media (max-width: 480px) {
+      .form-row { grid-template-columns: 1fr; }
+      .header-inner { padding: 12px 16px; }
+      .page-body { padding: 24px 16px 48px; }
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .form-card { animation: fadeUp 0.5s ease both; }
+    .info-panel .card:nth-child(1) { animation: fadeUp 0.45s 0.1s ease both; }
+    .info-panel .card:nth-child(2) { animation: fadeUp 0.45s 0.2s ease both; }
+    .info-panel .card:nth-child(3) { animation: fadeUp 0.45s 0.3s ease both; }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-area">
+      <div class="logo-emblem">Y</div>
+      <div class="logo-text">
+        <div class="name">Yenepoya (Deemed to be University)</div>
+        <div class="tagline">NAAC A+ Accredited · Mangalore Campus · Est. 1991</div>
+      </div>
+    </div>
+    <div class="header-contact">
+      <div class="contact-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 14.92z"/></svg>
+        +91-824-2204668
+      </div>
+      <div class="contact-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        Mon–Sat, 9am–5pm
+      </div>
+    </div>
+    <a href="https://admissions.yenepoya.edu.in/" target="_blank" class="apply-btn-header">Apply Online →</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Admissions Open — Batch 2026–27</div>
+    <h1>Enquire About Your<br><span>Future at Yenepoya</span></h1>
+    <p>From medicine and nursing to engineering, design, and management — explore 200+ programs across Mangalore, Mudipu &amp; Moodbidri campuses.</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="num">200+</div><div class="label">Programs Offered</div></div>
+      <div class="stat"><div class="num">30+</div><div class="label">Years of Excellence</div></div>
+      <div class="stat"><div class="num">NAAC</div><div class="label">A+ Accredited</div></div>
+      <div class="stat"><div class="num">₹26,000</div><div class="label">Registration Fee</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BODY -->
+<div class="page-body">
+  <div class="two-col">
+
+    <!-- LEFT: Info Panel -->
+    <div class="info-panel">
+
+      <!-- Course Explorer -->
+      <div class="card">
+        <div class="card-title"><div class="icon">📚</div> Explore Courses & Fees</div>
+        <div class="card-subtitle">2026-27 Batch · Mangalore Campus · Karnataka &amp; Non-Karnataka Students</div>
+
+        <div class="cat-tabs">
+          <button class="cat-tab active" onclick="filterCourses('medical')">Medical</button>
+          <button class="cat-tab" onclick="filterCourses('nursing')">Nursing</button>
+          <button class="cat-tab" onclick="filterCourses('pharmacy')">Pharmacy</button>
+          <button class="cat-tab" onclick="filterCourses('allied')">Allied Health</button>
+          <button class="cat-tab" onclick="filterCourses('engineering')">Engineering</button>
+          <button class="cat-tab" onclick="filterCourses('management')">Management</button>
+          <button class="cat-tab" onclick="filterCourses('arts')">Arts / Science</button>
+        </div>
+
+        <div class="course-list" id="courseList"></div>
+
+        <div class="elig-note" id="eligNote">
+          <strong>Eligibility:</strong> Select a category above to see eligibility requirements.
+        </div>
+      </div>
+
+      <!-- Important Notices -->
+      <div class="card">
+        <div class="card-title"><div class="icon">📋</div> Important Information</div>
+        <div class="notice-box">
+          <div class="notice-title">⚠️ Please Note Before Applying</div>
+          <ul>
+            <li>Registration fee of <strong>₹26,000</strong> is payable at the time of admission for all courses.</li>
+            <li>Student loan facilities &amp; easy installment payment options are available for eligible candidates.</li>
+            <li>NRI admissions are limited to candidates who completed their qualifying exam <em>outside India</em>.</li>
+            <li>Technology program students must possess their own laptop as prescribed by the university.</li>
+            <li>Scholarships available for meritorious candidates as per university policy.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Y-ENTRANCE -->
+      <div class="card">
+        <div class="card-title"><div class="icon">✍️</div> Y-ENTRANCE Exam</div>
+        <div class="card-subtitle">Online AI-Proctored Entrance Examination</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;gap:12px;">
+            <div style="background:var(--off-white);border-radius:9px;padding:12px 16px;flex:1;text-align:center;">
+              <div style="font-size:22px;font-weight:700;color:var(--blue);font-family:'Playfair Display',serif;">90 min</div>
+              <div style="font-size:12px;color:var(--grey);margin-top:2px;">UG Programs</div>
+            </div>
+            <div style="background:var(--off-white);border-radius:9px;padding:12px 16px;flex:1;text-align:center;">
+              <div style="font-size:22px;font-weight:700;color:var(--blue);font-family:'Playfair Display',serif;">60 min</div>
+              <div style="font-size:12px;color:var(--grey);margin-top:2px;">PG Programs</div>
+            </div>
+            <div style="background:var(--off-white);border-radius:9px;padding:12px 16px;flex:1;text-align:center;">
+              <div style="font-size:22px;font-weight:700;color:var(--blue);font-family:'Playfair Display',serif;">MCQ</div>
+              <div style="font-size:12px;color:var(--grey);margin-top:2px;">No Negative Marking</div>
+            </div>
+          </div>
+          <p style="font-size:13px;color:var(--text-muted);line-height:1.6;">Available on Android/iOS app or through the Y-ENTRANCE portal. Candidates may attempt the exam twice; best score is considered. Subsequent attempt fee: ₹500.</p>
+          <a href="https://admissions.yenepoya.edu.in/" target="_blank" style="display:inline-flex;align-items:center;gap:6px;color:var(--blue);font-size:13px;font-weight:600;text-decoration:none;">Register for Y-ENTRANCE →</a>
+        </div>
+      </div>
+
+      <!-- Hostel Info -->
+      <div class="card">
+        <div class="card-title"><div class="icon">🏠</div> Hostel Facilities</div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px;">
+          <div class="course-item">
+            <span class="cname">Medical/Nursing/Allied Health Programs</span>
+            <span class="cfee">₹60,000/yr</span>
+          </div>
+          <div class="course-item">
+            <span class="cname">Engineering / Degree / MBA / MCA</span>
+            <span class="cfee">₹1,00,000–1,50,000/yr</span>
+          </div>
+          <div class="course-item">
+            <span class="cname">PG Medical / Allied PG Programs</span>
+            <span class="cfee">₹1,20,000–1,50,000/yr</span>
+          </div>
+        </div>
+        <p style="font-size:12px;color:var(--grey);margin-top:10px;">Includes accommodation, meals, maintenance, electricity &amp; laundry (up to 75 pieces/month). 5% increase annually.</p>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: Enquiry Form -->
+    <div class="form-card">
+      <div class="form-header">
+        <h2>📋 Admission Enquiry</h2>
+        <p>Fill in your details — our admissions team will contact you within 2 working days.</p>
+      </div>
+      <div class="form-body">
+
+        <div class="section-divider">Personal Details</div>
+
+        <div class="form-group">
+          <label>Full Name <span class="req">*</span></label>
+          <input type="text" id="studentName" placeholder="Enter your full name" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email Address <span class="req">*</span></label>
+            <input type="email" id="email" placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label>Phone Number <span class="req">*</span></label>
+            <input type="tel" id="phone" placeholder="9876543210" maxlength="10" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>State / City</label>
+            <input type="text" id="city" placeholder="e.g. Bengaluru, Karnataka" />
+          </div>
+          <div class="form-group">
+            <label>Student Category</label>
+            <select id="category">
+              <option value="">Select</option>
+              <option value="Karnataka">Karnataka</option>
+              <option value="Non-Karnataka">Non-Karnataka</option>
+              <option value="NRI">NRI</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="section-divider">Course Preference</div>
+
+        <div class="form-group">
+          <label>Program Level <span class="req">*</span></label>
+          <div class="level-toggle">
+            <button class="level-btn active" onclick="setLevel('UG',this)">Under Graduate</button>
+            <button class="level-btn" onclick="setLevel('PG',this)">Post Graduate</button>
+            <button class="level-btn" onclick="setLevel('Diploma',this)">Diploma</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Course Interested In <span class="req">*</span></label>
+          <div class="select-group">
+            <select id="course" onchange="showEligibility()">
+              <option value="">-- Select a Course --</option>
+            </select>
+          </div>
+          <div class="elig-popup" id="formEligNote"></div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>10th Marks (%)</label>
+            <input type="number" id="marks10th" placeholder="e.g. 85" min="0" max="100" />
+          </div>
+          <div class="form-group">
+            <label>12th / Qualifying Marks (%)</label>
+            <input type="number" id="marks12th" placeholder="e.g. 78" min="0" max="100" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Message / Query</label>
+          <textarea id="message" placeholder="Ask about fees, hostel, scholarships, lateral entry, NEET..."></textarea>
+        </div>
+
+        <button class="submit-btn" id="submitBtn" onclick="submitForm()">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
+          Submit Enquiry
+        </button>
+
+        <p class="form-note">
+          By submitting, you agree to our <a href="#">Privacy Policy</a>. Your data is secure and will not be shared.
+          <br>For direct admission: <a href="https://admissions.yenepoya.edu.in/" target="_blank">admissions.yenepoya.edu.in</a>
+        </p>
+
+        <div id="successAlert" class="alert"></div>
+        <div id="errorAlert" class="alert"></div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  © 2026 Yenepoya (Deemed to be University), Deralakatte, Mangalore – 575018, Karnataka, India &nbsp;|&nbsp;
+  <a href="https://www.yenepoya.edu.in/" target="_blank">www.yenepoya.edu.in</a> &nbsp;|&nbsp;
+  Admissions: <a href="https://admissions.yenepoya.edu.in/" target="_blank">admissions.yenepoya.edu.in</a>
+</footer>
+
+<script>
+  // ── COURSE DATA ──────────────────────────────────────────────────────
+  const courses = {
+    medical: {
+      label: 'Medical / Dental / AYUSH',
+      elig: 'NEET qualified (BDS/BAMS/BHMS). For BNYS: PUC Science (PCB) with min. 50%.',
+      items: [
+        { name: 'Bachelor of Dental Surgery (BDS)', fee: '₹20,34,000', dur: '5 yrs', level: 'UG' },
+        { name: 'Bachelor of Ayurvedic Medicine & Surgery (BAMS)', fee: '₹21,39,000', dur: '5.5 yrs', level: 'UG' },
+        { name: 'Bachelor of Homeopathic Medicine & Surgery (BHMS) with Hostel', fee: '₹13,83,000', dur: '5.5 yrs', level: 'UG' },
+        { name: 'Bachelor of Homeopathic Medicine & Surgery (BHMS) without Hostel', fee: '₹9,58,000', dur: '5.5 yrs', level: 'UG' },
+        { name: 'Bachelor in Naturopathy & Yogic Science (BNYS)', fee: '₹6,24,000', dur: '5.5 yrs', level: 'UG' },
+        { name: 'M.Sc. Medical Physiology', fee: '₹24,000', dur: '3 yrs', level: 'PG' },
+        { name: 'M.Sc. Medical Biochemistry', fee: '₹24,000', dur: '3 yrs', level: 'PG' },
+        { name: 'M.Sc. Medical Pharmacology', fee: '₹24,000', dur: '3 yrs', level: 'PG' },
+        { name: 'M.Sc. Medical Anatomy', fee: '₹24,000', dur: '3 yrs', level: 'PG' },
+        { name: 'M.Sc. Medical Microbiology', fee: '₹2,70,000', dur: '3 yrs', level: 'PG' },
+        { name: 'Bachelor of Science in Dental Technology (DentCare)', fee: '₹5,08,000', dur: '3 yrs', level: 'UG' },
+        { name: 'Diploma in Dental Mechanics (DentCare)', fee: '₹3,46,000', dur: '2 yrs', level: 'Diploma' },
+      ]
+    },
+    nursing: {
+      label: 'Nursing Programs',
+      elig: 'B.Sc. Nursing (Girls/Boys): PUC Science (PCB) — min. 60% Girls, 70% Boys. PB.B.Sc. Nursing: GNM registered as R.N.R.M. M.Sc. Nursing: PB.B.Sc. or B.Sc. Nursing with 1 year experience & min. 55%.',
+      items: [
+        { name: 'B.Sc. Nursing – Girls', fee: '₹12,15,000', dur: '4 yrs', level: 'UG' },
+        { name: 'B.Sc. Nursing – Boys', fee: '₹14,15,000', dur: '4 yrs', level: 'UG' },
+        { name: 'PB.B.Sc. Nursing', fee: '₹1,01,000', dur: '2 yrs', level: 'UG' },
+        { name: 'M.Sc. Nursing – Medical Surgical', fee: '₹1,00,000', dur: '2 yrs', level: 'PG' },
+        { name: 'M.Sc. Nursing – Psychiatry', fee: '₹1,00,000', dur: '2 yrs', level: 'PG' },
+        { name: 'M.Sc. Nursing – Pediatric', fee: '₹1,00,000', dur: '2 yrs', level: 'PG' },
+        { name: 'M.Sc. Nursing – OBG', fee: '₹1,00,000', dur: '2 yrs', level: 'PG' },
+        { name: 'M.Sc. Nursing – Community', fee: '₹1,00,000', dur: '2 yrs', level: 'PG' },
+      ]
+    },
+    pharmacy: {
+      label: 'Pharmacy Programs',
+      elig: 'Pharm D: PUC Science (PCB/PCM/PCMB) min. 70%. B.Pharm: min. 60%. D.Pharm: min. 50%. M.Pharm: B.Pharm with min. 50%.',
+      items: [
+        { name: 'Doctor of Pharmacy (Pharm D)', fee: '₹16,51,000', dur: '6 yrs', level: 'UG' },
+        { name: 'Bachelor of Pharmacy (B.Pharm)', fee: '₹10,24,000', dur: '4 yrs', level: 'UG' },
+        { name: 'Diploma in Pharmacy (D.Pharm)', fee: '₹2,40,000', dur: '2 yrs', level: 'Diploma' },
+        { name: 'Master of Pharmacy – Pharmaceutics', fee: '₹2,70,000', dur: '2 yrs', level: 'PG' },
+        { name: 'Master of Pharmacy – Pharmacology', fee: '₹2,70,000', dur: '2 yrs', level: 'PG' },
+        { name: 'Master of Pharmacy – Pharmacy Practice', fee: '₹2,70,000', dur: '2 yrs', level: 'PG' },
+        { name: 'Master of Pharmacy – Regulatory Affairs', fee: '₹2,70,000', dur: '2 yrs', level: 'PG' },
+      ]
+    },
+    allied: {
+      label: 'Allied Health Sciences',
+      elig: 'Most UG programs: PUC Science (PCB) with 60–75% depending on course. PG programs: Relevant B.Sc. degree with min. 50%. See course-specific eligibility.',
+      items: [
+        { name: 'Bachelor of Physiotherapy (B.PT)', fee: '₹8,84,000', dur: '5 yrs', level: 'UG' },
+        { name: 'Bachelor of Audiology & Speech Language Pathology (BASLP)', fee: '₹14,33,000', dur: '4 yrs', level: 'UG' },
+        { name: 'B.Sc. Cardiovascular Technology (CVT)', fee: '₹12,39,000', dur: '4 yrs', level: 'UG' },
+        { name: 'B.Sc. Nuclear Medicine Technology', fee: '₹9,61,000', dur: '4 yrs', level: 'UG' },
+        { name: 'Bachelor of Anaesthesia & OT Technology (B.AOTT)', fee: '₹8,19,000', dur: '4 yrs', level: 'UG' },
+        { name: 'Bachelor of Medical Radiology & Imaging Technology (B.MRIT)', fee: '₹8,19,000', dur: '4 yrs', level: 'UG' },
+        { name: 'Bachelor of Medical Laboratory Science (B.MLS)', fee: '₹7,17,000', dur: '4 yrs', level: 'UG' },
+        { name: 'Bachelor of Emergency Medical Technologist / Paramedic (B.EMT)', fee: '₹7,17,000', dur: '4 yrs', level: 'UG' },
+        { name: 'Bachelor of Optometry (B.Optom)', fee: '₹6,93,000', dur: '5 yrs', level: 'UG' },
+        { name: 'B.Sc. Neuroscience Technology', fee: '₹6,93,000', dur: '4 yrs', level: 'UG' },
+        { name: 'Bachelor of Physician Associates (B.PA)', fee: '₹6,93,000', dur: '4 yrs', level: 'UG' },
+        { name: 'Bachelor of Dialysis Therapy Technology (B.DTT)', fee: '₹6,45,000', dur: '4 yrs', level: 'UG' },
+        { name: 'Bachelor of Occupational Therapy (B.OT)', fee: '₹8,51,000', dur: '5 yrs', level: 'UG' },
+        { name: 'B.Sc. Clinical Psychology (Hons.) – RCI', fee: '₹6,48,000', dur: '4 yrs', level: 'UG' },
+        { name: 'Bachelor of Psychology (B.Psy)', fee: '₹6,48,000', dur: '4 yrs', level: 'UG' },
+        { name: 'B.Sc. Forensic Science with minor in Cyber Forensics', fee: '₹3,97,000', dur: '3 yrs', level: 'UG' },
+        { name: 'Bachelor of Nutrition and Dietetics (Hons.)', fee: '₹3,97,000', dur: '4 yrs', level: 'UG' },
+        { name: 'B.Sc. Microbiology with minor in Biotechnology & Biochemistry', fee: '₹3,97,000', dur: '3 yrs', level: 'UG' },
+        { name: 'Bachelor of Hospital Administration', fee: '₹4,82,000', dur: '3 yrs', level: 'UG' },
+        { name: 'Master of Physiotherapy (MPT) – various specialisations', fee: '₹3,00,000', dur: '2 yrs', level: 'PG' },
+        { name: 'M.Sc. Clinical Embryology (with Momsoon IVF Centre)', fee: '₹6,20,000', dur: '2 yrs', level: 'PG' },
+        { name: 'Master of Hospital Administration (MHA)', fee: '₹2,91,000', dur: '2 yrs', level: 'PG' },
+        { name: 'Master of Public Health (MPH)', fee: '₹2,45,000', dur: '2 yrs', level: 'PG' },
+        { name: 'M.Sc. Psychology (Child/Corporate/Counselling)', fee: '₹2,10,000', dur: '2 yrs', level: 'PG' },
+        { name: 'PG Diploma in Counselling (Child, Corporate, Guidance)', fee: '₹52,000', dur: '1 yr', level: 'Diploma' },
+      ]
+    },
+    engineering: {
+      label: 'Engineering & Technology',
+      elig: 'B.Tech (Mangalore Campus): PUC/10+2 Science with 55% in Physics, Maths + one optional science subject. BE (Yenepoya Institute of Technology, Moodbidri): PUC Science with 45% in PCM. M.Tech: BE with min. 50% + GATE/PGCET.',
+      items: [
+        { name: 'B.Tech AI & Machine Learning – IBM & TCS (Proxima)', fee: '₹9,50,000', dur: '4 yrs', level: 'UG' },
+        { name: 'B.Tech CSE – Software Engineering (Kalvium)', fee: '₹8,00,000', dur: '4 yrs', level: 'UG' },
+        { name: 'B.Tech CSE – Artificial Intelligence (Nxt Wave)', fee: '₹10,50,000', dur: '4 yrs', level: 'UG' },
+        { name: 'B.Tech Computer Science Engineering', fee: '₹9,50,000', dur: '4 yrs', level: 'UG' },
+        { name: 'BE Mechanical Engineering (YIT Moodbidri)', fee: '₹4,40,000', dur: '4 yrs', level: 'UG' },
+        { name: 'BE Electronics & Communication Engineering (YIT)', fee: '₹4,80,000', dur: '4 yrs', level: 'UG' },
+        { name: 'BE Computer Science & Engineering (YIT)', fee: '₹6,00,000', dur: '4 yrs', level: 'UG' },
+        { name: 'BE Computer Science – Data Science (YIT)', fee: '₹6,00,000', dur: '4 yrs', level: 'UG' },
+        { name: 'BE Artificial Intelligence & Machine Learning (YIT)', fee: '₹6,80,000', dur: '4 yrs', level: 'UG' },
+        { name: 'BE Information Science & Engineering (YIT)', fee: '₹5,44,000', dur: '4 yrs', level: 'UG' },
+        { name: 'M.Tech VLSI Design & Embedded System (YIT)', fee: '₹1,70,000', dur: '2 yrs', level: 'PG' },
+        { name: 'MCA Cloud Computing with DevOps – IBM', fee: '₹2,79,000', dur: '2 yrs', level: 'PG' },
+        { name: 'MCA Cybersecurity & Ethical Hacking – IBM', fee: '₹2,79,000', dur: '2 yrs', level: 'PG' },
+        { name: 'MCA AI & Machine Learning – Microsoft', fee: '₹2,79,000', dur: '2 yrs', level: 'PG' },
+        { name: 'M.Sc. Cybersecurity & Ethical Hacking – Microsoft', fee: '₹2,79,000', dur: '2 yrs', level: 'PG' },
+      ]
+    },
+    management: {
+      label: 'Management & Commerce',
+      elig: 'BBA/BCA/B.Com: PUC Any Stream, min. 45–60% depending on program. MBA: Any UG degree with min. 50%; MBA LEAP requires CAT/MAT/XAT/CMAT/GMAT/ATMA. M.Com: Commerce UG with min. 50%.',
+      items: [
+        { name: 'BCA Cybersecurity & Ethical Hacking – IBM', fee: '₹4,78,000', dur: '3 yrs', level: 'UG' },
+        { name: 'BCA AI & Machine Learning – Microsoft', fee: '₹4,78,000', dur: '3 yrs', level: 'UG' },
+        { name: 'BCA Data Science & AI – Face Prep', fee: '₹4,78,000', dur: '3 yrs', level: 'UG' },
+        { name: 'BCA Cloud Computing & Cybersecurity – IBM', fee: '₹4,78,000', dur: '3 yrs', level: 'UG' },
+        { name: 'BCA Super Specialisation Programs (Microsoft)', fee: '₹3,97,000', dur: '3 yrs', level: 'UG' },
+        { name: 'BBA Hospital Administration with Medical Tourism – Microsoft', fee: '₹3,97,000', dur: '3 yrs', level: 'UG' },
+        { name: 'BBA Logistics & Aviation – IATA', fee: '₹4,27,000', dur: '3 yrs', level: 'UG' },
+        { name: 'BBA Business Management & Digital Marketing – IoA UK', fee: '₹3,97,000', dur: '3 yrs', level: 'UG' },
+        { name: 'BBA Entrepreneurship & Innovation – IoA UK', fee: '₹3,97,000', dur: '3 yrs', level: 'UG' },
+        { name: 'B.Com International Accounting & Finance with ACCA', fee: '₹4,93,000', dur: '3 yrs', level: 'UG' },
+        { name: 'B.Com International Management Accounting – CMA US', fee: '₹4,78,000', dur: '3 yrs', level: 'UG' },
+        { name: 'B.Com Finance, Taxation & Auditing – Microsoft', fee: '₹3,97,000', dur: '3 yrs', level: 'UG' },
+        { name: 'MBA Marketing & Finance – Institute of Analytics UK', fee: '₹3,74,000', dur: '2 yrs', level: 'PG' },
+        { name: 'MBA Digital Business Management – IoA UK', fee: '₹3,74,000', dur: '2 yrs', level: 'PG' },
+        { name: 'MBA Healthcare Management – Microsoft', fee: '₹3,74,000', dur: '2 yrs', level: 'PG' },
+        { name: 'MBA Logistics & Supply Chain Management – IBM', fee: '₹3,74,000', dur: '2 yrs', level: 'PG' },
+        { name: 'MBA Innovation, Entrepreneurship & Venture – Microsoft', fee: '₹3,74,000', dur: '2 yrs', level: 'PG' },
+        { name: 'M.Com Finance & Taxation', fee: '₹64,000', dur: '2 yrs', level: 'PG' },
+        { name: 'M.Com International Accounting & Finance – ISDC', fee: '₹1,24,000', dur: '2 yrs', level: 'PG' },
+      ]
+    },
+    arts: {
+      label: 'Arts / Science / Design / Hospitality',
+      elig: 'BA/B.Des/B.Sc. Hospitality: PUC Any Stream with min. 45–55%. B.Sc. Forensic/Microbiology: PUC Science min. 55%. Integrated M.Sc Chemistry: PUC Science with Chemistry min. 55%.',
+      items: [
+        { name: 'BA Economics, Political Science & Psychology', fee: '₹96,000', dur: '3 yrs', level: 'UG' },
+        { name: 'BA Journalism & Digital Media', fee: '₹96,000', dur: '3 yrs', level: 'UG' },
+        { name: 'B.Des Communication Design – Animation', fee: '₹5,51,000', dur: '4 yrs', level: 'UG' },
+        { name: 'B.Des Communication Design – Graphic Design', fee: '₹5,51,000', dur: '4 yrs', level: 'UG' },
+        { name: 'B.Des Communication Design – Visual Effects', fee: '₹5,51,000', dur: '4 yrs', level: 'UG' },
+        { name: 'B.Des Fashion Design', fee: '₹5,51,000', dur: '4 yrs', level: 'UG' },
+        { name: 'Bachelor of Hotel Management (BHM)', fee: '₹4,24,000', dur: '4 yrs', level: 'UG' },
+        { name: 'B.Sc. Culinary Arts', fee: '₹3,22,000', dur: '3 yrs', level: 'UG' },
+        { name: 'Integrated M.Sc Industrial Chemistry – Specialisations', fee: '₹4,86,000', dur: '5 yrs', level: 'UG' },
+        { name: 'M.Sc. Chemistry', fee: '₹84,000', dur: '2 yrs', level: 'PG' },
+        { name: 'M.Sc. Analytical Chemistry', fee: '₹84,000', dur: '2 yrs', level: 'PG' },
+        { name: 'M.Sc. Organic Chemistry', fee: '₹84,000', dur: '2 yrs', level: 'PG' },
+        { name: 'M.Sc. Data Science', fee: '₹24,000', dur: '2 yrs', level: 'PG' },
+        { name: 'M.Sc. Forensic Science (various minors)', fee: '₹1,80,000', dur: '2 yrs', level: 'PG' },
+        { name: 'M.Sc. Food Technology', fee: '₹3,20,000', dur: '2 yrs', level: 'PG' },
+        { name: 'M.Sc. Microbiology', fee: '₹1,80,000', dur: '2 yrs', level: 'PG' },
+      ]
+    }
+  };
+
+  // All courses flat list for form dropdown
+  const allCourses = {};
+  Object.values(courses).forEach(cat => {
+    cat.items.forEach(c => {
+      allCourses[c.name] = { elig: cat.elig, fee: c.fee, dur: c.dur };
+    });
+  });
+
+  let currentLevel = 'UG';
+  let currentCat = 'medical';
+
+  function setLevel(level, btn) {
+    currentLevel = level;
+    document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    populateFormCourses();
+    document.getElementById('formEligNote').classList.remove('show');
+  }
+
+  function populateFormCourses() {
+    const sel = document.getElementById('course');
+    sel.innerHTML = '<option value="">-- Select a Course --</option>';
+    Object.values(courses).forEach(cat => {
+      cat.items.filter(c => c.level === currentLevel).forEach(c => {
+        const opt = document.createElement('option');
+        opt.value = c.name;
+        opt.textContent = c.name;
+        sel.appendChild(opt);
+      });
+    });
+  }
+
+  function showEligibility() {
+    const sel = document.getElementById('course');
+    const note = document.getElementById('formEligNote');
+    const chosen = sel.value;
+    if (chosen && allCourses[chosen]) {
+      const info = allCourses[chosen];
+      note.innerHTML = `<strong>📋 Eligibility</strong>${info.elig}<br><span style="color:var(--blue);font-weight:600;">Total Fee: ${info.fee} · Duration: ${info.dur}</span>`;
+      note.classList.add('show');
+    } else {
+      note.classList.remove('show');
+    }
+  }
+
+  function filterCourses(cat) {
+    currentCat = cat;
+    document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+    event.target.classList.add('active');
+    renderCourseList();
+  }
+
+  function renderCourseList() {
+    const list = document.getElementById('courseList');
+    const note = document.getElementById('eligNote');
+    const cat = courses[currentCat];
+    list.innerHTML = '';
+    cat.items.forEach(c => {
+      const el = document.createElement('div');
+      el.className = 'course-item';
+      el.innerHTML = `<span class="cname">${c.name}</span><span class="cdur">${c.dur}</span><span class="cfee">${c.fee}</span>`;
+      list.appendChild(el);
+    });
+    note.innerHTML = `<strong>Eligibility:</strong> ${cat.elig}`;
+  }
+
+  // ── FORM SUBMIT ──────────────────────────────────────────────────────
+  async function submitForm() {
+    const btn = document.getElementById('submitBtn');
+    const successAlert = document.getElementById('successAlert');
+    const errorAlert = document.getElementById('errorAlert');
+
+    successAlert.className = 'alert';
+    errorAlert.className = 'alert';
+
+    const studentName = document.getElementById('studentName').value.trim();
+    const email       = document.getElementById('email').value.trim();
+    const phone       = document.getElementById('phone').value.trim();
+    const course      = document.getElementById('course').value;
+    const marks10th   = document.getElementById('marks10th').value;
+    const marks12th   = document.getElementById('marks12th').value;
+    const city        = document.getElementById('city').value.trim();
+    const category    = document.getElementById('category').value;
+    const message     = document.getElementById('message').value.trim();
+
+    if (!studentName || !email || !phone || !course) {
+      errorAlert.textContent = '⚠️ Please fill in all required fields: Name, Email, Phone, and Course.';
+      errorAlert.className = 'alert error';
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errorAlert.textContent = '⚠️ Please enter a valid email address.';
+      errorAlert.className = 'alert error';
+      return;
+    }
+    if (!/^\d{10}$/.test(phone)) {
+      errorAlert.textContent = '⚠️ Please enter a valid 10-digit phone number.';
+      errorAlert.className = 'alert error';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.innerHTML = '<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="animation:spin 1s linear infinite"><circle cx="12" cy="12" r="10" stroke-dasharray="40" stroke-dashoffset="10"/></svg> Submitting...';
+
+    // ⚠️ REPLACE THIS URL WITH YOUR ACTUAL API GATEWAY URL FROM STEP 7
+    const API_URL = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ studentName, email, phone, course, marks10th, marks12th, city, category, message })
+      });
+      const data = await response.json();
+
+      if (response.ok) {
+        successAlert.innerHTML = `
+          ✅ <strong>Enquiry submitted successfully!</strong><br>
+          A confirmation email has been sent to <strong>${email}</strong>.<br>
+          Our admissions team will contact you within 2 working days.<br>
+          <div class="ref-id">🔖 Reference ID: ${data.referenceId}</div>
+        `;
+        successAlert.className = 'alert success';
+        clearForm();
+      } else {
+        throw new Error(data.error || 'Server error. Please try again.');
+      }
+    } catch (err) {
+      // Demo mode fallback (when API not connected yet)
+      if (API_URL.includes('YOUR-API-ID')) {
+        const fakeId = 'YEN-' + Math.random().toString(36).substr(2,9).toUpperCase();
+        successAlert.innerHTML = `
+          ✅ <strong>Demo Mode — Form is working!</strong><br>
+          Connect your AWS API Gateway URL to go live.<br>
+          Student: <strong>${studentName}</strong> | Course: <strong>${course}</strong><br>
+          <div class="ref-id">🔖 Demo Reference ID: ${fakeId}</div>
+        `;
+        successAlert.className = 'alert success';
+        clearForm();
+      } else {
+        errorAlert.textContent = '❌ ' + err.message;
+        errorAlert.className = 'alert error';
+      }
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = '<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg> Submit Enquiry';
+    }
+  }
+
+  function clearForm() {
+    ['studentName','email','phone','city','marks10th','marks12th','message'].forEach(id => {
+      document.getElementById(id).value = '';
+    });
+    document.getElementById('course').value = '';
+    document.getElementById('category').value = '';
+    document.getElementById('formEligNote').classList.remove('show');
+  }
+
+  // ── INIT ─────────────────────────────────────────────────────────────
+  renderCourseList();
+  populateFormCourses();
+
+  // Spin animation for loading
+  const style = document.createElement('style');
+  style.textContent = '@keyframes spin { to { transform: rotate(360deg); } }';
+  document.head.appendChild(style);
+</script>
+</body>
+</html>
