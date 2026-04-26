@@ -33,6 +33,15 @@ capturing real student enquiries stored in AWS DynamoDB.
 
 ## ⚙️ AWS Architecture
 
+Student fills form (S3 Static Website)
+↓
+API Gateway (REST API + CORS)
+↓
+AWS Lambda (Python 3.12 + Boto3)
+/         
+DynamoDB        SES
+(stores data)   (sends 2 emails)
+
 
 ## 🛠️ Services Used
 
@@ -69,8 +78,8 @@ capturing real student enquiries stored in AWS DynamoDB.
 I build custom AWS-powered websites and lead capture 
 systems for colleges, schools & businesses.
 
-📩 **Contact:** your-email@gmail.com  
-💼 **LinkedIn:** linkedin.com/in/your-profile
+📩 **Contact:** sayedsirath83@gmail.com  
+💼 **LinkedIn:** www.linkedin.com/in/sayed-sirath-2baa5022a
 
 ---
 
