@@ -64,13 +64,13 @@ DynamoDB        SES
 ## 📸 Screenshots
 
 ### 🌐 Live Portal — Homepage
-![Portal Homepage](screenshots/portal.png.png)
+![Portal Homepage](portal.png)
 
 ### 📋 Admission Enquiry Form
-![Enquiry Form](screenshots/portal2.png)
+![Enquiry Form](portal2.png)
 
 ### 🗄️ DynamoDB — Live Data
-![DynamoDB Live Data](screenshots/dynamodb.png.png)
+![DynamoDB Live Data](dynamodb.png)
 
 ---
 
