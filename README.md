@@ -7,7 +7,7 @@
 ---
 
 ## 🌐 Live Demo
-🔗 [Click here to view live project](YOUR-S3-URL-HERE)
+🔗 [Click here to view live project](https://college-enquiry-fx.s3.us-east-1.amazonaws.com/index.html)
 
 ---
 
