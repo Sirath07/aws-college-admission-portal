@@ -61,6 +61,16 @@ DynamoDB        SES
 - Each submission stored with unique UUID
 - Timestamps, course, marks all recorded
 
+## 📸 Screenshots
+
+### 🌐 Live Portal — Homepage
+![Portal Homepage](screenshots/portal.png)
+
+### 📋 Admission Enquiry Form
+![Enquiry Form](screenshots/portal2.png)
+
+### 🗄️ DynamoDB — Live Data
+![DynamoDB Live Data](screenshots/dynamodb.png)
 ---
 
 ## 🚀 Setup Guide
